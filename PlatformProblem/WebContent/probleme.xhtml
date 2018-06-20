@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+      <meta charset="utf-8" />
+      <title>Probleme ET Solution</title>
+      <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <style>
+         /*font Awesome http://fontawesome.io*/
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+/*Comment List styles*/
+.comment-list .row {
+  margin-bottom: 0px;
+}
+.comment-list .panel .panel-heading {
+  padding: 4px 15px;
+  position: absolute;
+  border:none;
+  /*Panel-heading border radius*/
+  border-top-right-radius:0px;
+  top: 1px;
+}
+.comment-list .panel .panel-heading.right {
+  border-right-width: 0px;
+  /*Panel-heading border radius*/
+  border-top-left-radius:0px;
+  right: 16px;
+}
+.comment-list .panel .panel-heading .panel-body {
+  padding-top: 6px;
+}
+.comment-list figcaption {
+  /*For wrapping text in thumbnail*/
+  word-wrap: break-word;
+}
+/* Portrait tablets and medium desktops */
+@media (min-width: 768px) {
+  .comment-list .arrow:after, .comment-list .arrow:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+  }
+  .comment-list .panel.arrow.left:after, .comment-list .panel.arrow.left:before {
+    border-left: 0;
+  }
+  /*****Left Arrow*****/
+  /*Outline effect style*/
+  .comment-list .panel.arrow.left:before {
+    left: 0px;
+    top: 30px;
+    /*Use boarder color of panel*/
+    border-right-color: inherit;
+    border-width: 16px;
+  }
+  /*Background color effect*/
+  .comment-list .panel.arrow.left:after {
+    left: 1px;
+    top: 31px;
+    /*Change for different outline color*/
+    border-right-color: #FFFFFF;
+    border-width: 15px;
+  }
+  /*****Right Arrow*****/
+  /*Outline effect style*/
+  .comment-list .panel.arrow.right:before {
+    right: -16px;
+    top: 30px;
+    /*Use boarder color of panel*/
+    border-left-color: inherit;
+    border-width: 16px;
+  }
+  /*Background color effect*/
+  .comment-list .panel.arrow.right:after {
+    right: -14px;
+    top: 31px;
+    /*Change for different outline color*/
+    border-left-color: #FFFFFF;
+    border-width: 15px;
+  }
+}
+.comment-list .comment-post {
+  margin-top: 6px;
+}
+
+
+
+
+
+
+
+
+
+body{ background: #fafafa;}
+.widget-area.blank {
+background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+-ms-box-shadow: none;
+-o-box-shadow: none;
+box-shadow: none;
+}
+body .no-padding {
+padding: 0;
+}
+.widget-area {
+background-color: #fff;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+-o-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+-ms-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+-o-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+float: left;
+margin-top: 30px;
+padding: 25px 30px;
+position: relative;
+width: 100%;
+}
+.status-upload {
+background: none repeat scroll 0 0 #f5f5f5;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+-o-border-radius: 4px;
+border-radius: 4px;
+float: left;
+width: 100%;
+}
+.status-upload form {
+float: left;
+width: 100%;
+}
+.status-upload form textarea {
+background: none repeat scroll 0 0 #fff;
+border: medium none;
+-webkit-border-radius: 4px 4px 0 0;
+-moz-border-radius: 4px 4px 0 0;
+-ms-border-radius: 4px 4px 0 0;
+-o-border-radius: 4px 4px 0 0;
+border-radius: 4px 4px 0 0;
+color: #777777;
+float: left;
+font-family: Lato;
+font-size: 14px;
+height: 142px;
+letter-spacing: 0.3px;
+padding: 20px;
+width: 100%;
+resize:vertical;
+outline:none;
+border: 1px solid #F2F2F2;
+}
+
+.status-upload ul {
+float: left;
+list-style: none outside none;
+margin: 0;
+padding: 0 0 0 15px;
+width: auto;
+}
+.status-upload ul > li {
+float: left;
+}
+.status-upload ul > li > a {
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+-o-border-radius: 4px;
+border-radius: 4px;
+color: #777777;
+float: left;
+font-size: 14px;
+height: 30px;
+line-height: 30px;
+margin: 10px 0 10px 10px;
+text-align: center;
+-webkit-transition: all 0.4s ease 0s;
+-moz-transition: all 0.4s ease 0s;
+-ms-transition: all 0.4s ease 0s;
+-o-transition: all 0.4s ease 0s;
+transition: all 0.4s ease 0s;
+width: 30px;
+cursor: pointer;
+}
+.status-upload ul > li > a:hover {
+background: none repeat scroll 0 0 #606060;
+color: #fff;
+}
+.status-upload form button {
+border: medium none;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+-o-border-radius: 4px;
+border-radius: 4px;
+color: #fff;
+float: right;
+font-family: Lato;
+font-size: 14px;
+letter-spacing: 0.3px;
+margin-right: 9px;
+margin-top: 9px;
+padding: 6px 15px;
+}
+.dropdown > a > span.green:before {
+border-left-color: #2dcb73;
+}
+.status-upload form button > i {
+margin-right: 7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+.panel-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+
+
+
+
+      </style>
+    </h:head>
+    <h:body>
+          <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Probleme ET Solution</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation -->
+            <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <h:link class="nav-link text-gris"  value = "Profil" outcome = "Profil" />
+                    </li>   
+                     <li class="nav-item">
+                        <h:link class="nav-link text-gris"  value = "Recherche" outcome = "Recherche" />
+                    </li>          
+                </ul>
+                 
+                         
+        
+                 <h:form method="post" action="Deconnexion" style=" margin-left: 700px; margin-top:15px;" >
+                      <h:commandButton  value="Deconnexion" action="#{login.logout}"></h:commandButton>
+                </h:form> 
+            </div>
+        </ul>
+        </div>
+    </nav>
+    <!-- Navigation -->
+ <div class="container">
+	<div class="card">
+	    <div class="card-body">
+	        <div class="row">
+        	    <div class="col-md-2">
+        	        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+        	        <p class="text-secondary text-center">#{login.u.nom}#{login.u.prenom}</p>
+        	    </div>
+        	    <div class="col-md-10">
+        	        <p>
+        	            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>#{gererproblem.pr.titre}</strong></a>
+        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+        	       </p>
+        	       <br/>
+        	       <div class="clearfix"></div>
+        	        <p>#{gererproblem.pr.text_prob}</p>
+        	        <p>
+        	        <h:form rendered="#{login.u.id== gererproblem.pr.id_user}">
+                            <h:commandButton class="float-right btn btn-outline-primary ml-2" value="Modifier" action="#{login.getProb(gererproblem.pr.id)}"></h:commandButton>
+                    </h:form >
+                    <h:form rendered="#{login.u.id== gererproblem.pr.id_user}">
+                            <h:commandButton  class="float-right btn text-white btn-danger" value="Supprimer" action="#{login.SupprimerProblem(gererproblem.pr.id)}"></h:commandButton>
+        	        </h:form>
+        	       </p>
+        	    </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+
+ <!-- comments -->
+ <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="page-header">Comments</h2>
+        <section class="comment-list">
+          <!-- First Comment -->
+         <ui:repeat  value="#{gererproblem.comm}" var="com">
+          <article class="row">
+            <div class="col-md-2 col-sm-2 hidden-xs">
+              <figure class="thumbnail">
+                  <img class="img-responsive" src="https://image.ibb.co/jw55Ex/def_face.jpg" />
+                  <figcaption class="text-center"></figcaption>
+              </figure>
+            </div>
+            <div class="col-md-10 col-sm-10">
+              <div class="panel panel-default arrow left">
+                <div class="panel-body">
+                  <header class="text-left">
+                    <div class="comment-user"><i class="fa fa-user"></i>#{com.nom_user} #{com.prenom_user}</div>
+                    <!-- <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i>Dec 16, 2014</time>-->
+                  </header>
+                  <div class="comment-post">
+                    <p>
+                      #{com.text_comm}
+                    </p>
+                  </div>
+                   <p class="text-right" >
+                   <h:form rendered="#{login.u.id== com.id_user}">
+                     <h:commandButton class="btn btn-default btn-sm" value="Supprimer"  action="#{gererproblem.SupprimerComment(com.id)}"></h:commandButton>
+                   </h:form>
+                   </p>
+                </div>
+              </div>
+            </div>
+          </article>
+          </ui:repeat>
+        </section>
+    </div>
+  </div>
+</div>
+    <!-- comments -->
+    <!-- addComent -->
+    <div class="container">
+	<div class="row">
+		<h4 style="margin-left:150px;">Ajouter une commentaire:</h4>
+	</div>
+    
+    <div class="row" style="margin-left:110px;">
+    
+    <div class="col-md-6">
+    						<div class="widget-area no-padding blank" style=" margin-bottom:20px; margin-top:10px;">
+								<div class="status-upload">
+									<h:form>
+									
+										<h:inputTextarea rows="10" cols="200" value="#{gererproblem.commt.text_comm}" required="true" requiredMessage="Vous devez ecrire une commentaire avant d'enregistrer"></h:inputTextarea>      
+                                         <h:commandButton  style="margin-left:370px;" class="btn btn-success green"  value="Ajouter" action="#{gererproblem.AjouterComment(login.u.id)}"></h:commandButton>
+                                        
+									</h:form>
+								</div><!-- Status Upload  -->
+							</div><!-- Widget Area -->
+						</div>
+        
+    </div>
+</div> 
+
+
+<h2 class="page-header" style="margin-left:70px;">Solutions</h2>
+<ui:repeat  value="#{gererproblem.sol}" var="sols">
+<div class="container">
+    <div class="col-sm-14">
+        <div class="panel panel-white post panel-shadow">
+            <div class="post-heading">
+                <div class="pull-left image">
+                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image"></img>
+                </div>
+                <div class="pull-left meta">
+                    <div class="title h5">
+                        <b>#{sols.nom_user} #{sols.prenom_user} </b>
+                    </div>
+                </div>
+            </div> 
+            <div class="post-description"> 
+                <p>#{sols.texte_sol}</p>
+                <div class="stats">
+                    <td><h:form rendered="#{login.u.id==sols.id_user}">
+                        <h:commandButton class="btn btn-primary" style="margin-bottom: 50px; margin-top: 10px;" value="Supprimer" action="#{gererproblem.SupprimerSol(sols.id_sol)}"></h:commandButton>
+                    </h:form></td>
+                </div>
+            </div>
+            <div class="post-footer">
+                <div class="input-group"> 
+                <h:form>
+                      <h:inputText class="form-control mr-sm-2" id="ajoutercomm" value="#{gererproblem.comv.text_comm}"  required="true" ></h:inputText>
+                      <h:commandButton class="fa fa-edit"  value="Ajouter" action="#{gererproblem.addComSolution(sols.id_sol,login.u.id)}" style=" margin-top:0px;"></h:commandButton>
+                    
+                 </h:form>
+                </div>
+                <ui:repeat  value="#{gererproblem.comm_sol}" var="cs">
+                <h:panelGroup layout="block" rendered="#{sols.id_sol == cs.id_sol}">
+                <ul class="comments-list">
+                    <li class="comment" >
+                        <a class="pull-left" href="#">
+                            <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar"></img>
+                        </a>
+                        <div class="comment-body">
+                            <div class="comment-heading">
+                                <h4 class="user">#{cs.nom_user} #{cs.prenom_user} </h4>
+                            </div>
+                            <p>#{cs.text_comm}</p>
+                              <h:form rendered="#{login.u.id==cs.id_user}">
+                               <h:commandButton class="btn btn-primary" style="margin-bottom: 50px; margin-top: 10px;" value="Supprimer" action="#{gererproblem.SupprimerCom(cs.id)}"></h:commandButton>
+                              </h:form>
+                        </div>
+                    </li>
+                </ul>
+                </h:panelGroup>
+                </ui:repeat>
+            </div>
+        </div>
+    </div>
+</div>
+</ui:repeat>
+
+    <div class="container">
+	<div class="row">
+		<h4 style="margin-left:150px;">Ajouter une Solution:</h4>
+	</div>
+    
+    <div class="row" style="margin-left:110px;">
+    
+    <div class="col-md-6">
+    						<div class="widget-area no-padding blank" style=" margin-bottom:20px; margin-top:10px;">
+								<div class="status-upload">
+									<h:form>
+									
+										<h:inputTextarea rows="10" cols="200" value="#{gererproblem.solt.texte_sol}" required="true" requiredMessage="Vous devez ecrire une commentaire avant d'enregistrer"></h:inputTextarea>      
+                                         <h:commandButton  style="margin-left:370px;" class="btn btn-success green"  value="Ajouter" action="#{gererproblem.AjouterSolution(login.u.id)}"></h:commandButton>
+                                        
+									</h:form>
+								</div>
+							</div>
+						</div>
+        
+    </div>
+</div> 
+<!-- sols -->
+
+<!--Probleme-->  
+   
+ <h2 class="page-header" style="margin-left:70px;">Sous Problemes:</h2>   
+     <div class="row" >
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Probleme</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                <ui:repeat  value="#{gererproblem.pros}" var="pro">
+                  <tr>
+                    <th scope="row">#{pro.id}</th>
+                    <td>#{pro.titre}</td> 
+                    <td><h:form >
+                      <h:commandButton class="btn btn-primary" style="margin-bottom: 50px; margin-top: 10px;" value="Detail" action="#{gererproblem.detail(pro.id)}"></h:commandButton>
+                    </h:form></td>
+                    <td><h:form style="margin-top:0px;" rendered="#{login.u.id== pro.id_user}">
+                    <h:commandButton class="float-right btn text-white btn-danger" style="margin-bottom: 50px; margin-top: 10px; margin-left:-1000px;" value="Supprimer" action="#{gererproblem.SupprimerSousProblem(pro.id)}"></h:commandButton>                  
+                    </h:form></td>
+                    </tr>
+                  </ui:repeat>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="kkk">
+      <h:form>
+            <h:commandButton class="btn btn-primary" style="margin-bottom: 50px; margin-top: 10px; margin-left:1200px;" value="Ajouter un Sous probleme" action="AjoutSousProb"></h:commandButton>
+      </h:form>
+      </div>
+     
+    
+
+     
+
+
+  
+
+   <!-- Footer -->
+    <footer class="footer bg-dark text-white">
+
+        <!-- Social Icons -->
+        <div class="bg-primary">
+            <div class="container">
+                <div class="row py-4">
+                    <div class="col-md-6 col-lg-7">
+                        <h4 class="mb-0 white-text">Se connecter avec nous sue les réseaux sociaux</h4>
+                    </div>
+                    <div class="col-md-6 col-lg-5 text-right">
+                        <a><i class="fa fa-facebook white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-twitter white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-google-plus white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-linkedin white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-instagram white-text mr-lg-4 fa-2x"> </i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Social Icons -->
+
+        <!-- Footer Links -->
+        <div class="container pt-5 pb-2">
+            <div class="row">
+            </div>
+        </div>
+        <!-- Footer Links-->
+
+        <hr class="bg-white mx-4 mt-2 mb-1"></hr>
+
+        <!-- Copyright-->
+        <div class="container-fluid">
+            <p class="text-center m-0 py-1">
+                © 2017 Copyright <a href="https://getbootstrap.com/" class="text-white">Problemes ET Solutions</a>
+            </p>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+    </h:body>
+</html>

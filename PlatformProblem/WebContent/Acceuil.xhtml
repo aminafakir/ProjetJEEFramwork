@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Problemes ET Solutions</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+        <style type="text/css">
+            #acc
+            {
+            	margin-bottom: 1000px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+    <div style="margin-top:100px;">
+    	
+    </div>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Problemes ET Solutions</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation -->
+            <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            	<div>
+                <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                        <h:link class="nav-link text-gris" value = "Inscription" outcome = "Inscription" />
+                    </li>
+                    
+                </ul>
+                </div>
+                   <DIV style="margin-left:300px;"></DIV>
+                <div>                  
+                 <h:form id="formulaire" class="form-inline my-2 my-lg-0" >
+	                  <h:inputText class="form-control mr-sm-2" id="username" value="#{login.user}"  required="true" ></h:inputText>
+	                  <h:message for="username"></h:message>
+	                  
+	                  <h:inputSecret class="form-control mr-sm-2" id="password" value="#{login.pwd}"  required="true" ></h:inputSecret>
+                      <h:message for="password"></h:message>
+                      
+                      <h:commandButton  action="#{login.validateUsernamePassword}" value="Login" style="margin-left:450px; margin-top:-35px;"></h:commandButton>
+                </h:form> 
+                </div>
+
+            </div>
+        </ul>
+        </div>
+    </nav>
+    <!-- Navigation -->
+    
+    <div class="container mb-5" id="acc">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="display-4">Acceuil</h3>
+                <hr class="bg-dark w-25 ml-0"></hr>
+                <p class="lead">
+                    Si vous souhaiter gerer vos projets en groupes ou vous souhaiter résoudre un probleme complex la platforme Probleme ET Solution va t'aider aboutir a ton objectif.
+                </p>
+                
+                <p>
+                  Probleme ET Solution est une platforme qui vous permet de poser un probleme et discuter avec d'autres membres pour le resoudre.ainsi cet platforme vous offre la possibilité de:
+                </p>
+                
+                <ul class="list-unstyled pl-4">
+                    <li><i class="fa fa-check"></i> Poser un problemes complexe. </li>
+                    <li><i class="fa fa-check"></i> Trouver l'aide pour arriver a le resoudre. </li>
+                    <li><i class="fa fa-check"></i> Echanger les informations avec les autres membres.</li>
+                </ul>
+               
+            </div>
+            <div class="col-md-4 mt-5">
+                <img class="card-img-top" src="collabore.jpg" alt="Card image cap"></img>
+            </div>
+        </div>
+    </div>
+
+   <!-- Footer -->
+    <footer class="footer bg-dark text-white" style="margin-top:150px;">
+
+        <!-- Social Icons -->
+        <div class="bg-primary">
+            <div class="container">
+                <div class="row py-4">
+                    <div class="col-md-6 col-lg-7">
+                        <h4 class="mb-0 white-text">Se connecter avec nous sue les réseaux sociaux</h4>
+                    </div>
+                    <div class="col-md-6 col-lg-5 text-right">
+                        <a><i class="fa fa-facebook white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-twitter white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-google-plus white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-linkedin white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-instagram white-text mr-lg-4 fa-2x"> </i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Social Icons -->
+
+        <!-- Footer Links -->
+        <div class="container pt-5 pb-2">
+            <div class="row">
+            </div>
+        </div>
+        <!-- Footer Links-->
+
+        <hr class="bg-white mx-4 mt-2 mb-1"></hr>
+
+        <!-- Copyright-->
+        <div class="container-fluid">
+            <p class="text-center m-0 py-1">
+                © 2017 Copyright <a href="https://getbootstrap.com/" class="text-white">Problemes ET Solutions</a>
+            </p>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+        
+    </h:body>
+    </html>

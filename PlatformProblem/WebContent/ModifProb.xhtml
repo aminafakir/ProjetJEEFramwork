@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+      <meta charset="utf-8" />
+      <title>VILLE DE LA CONNAISSANCE</title>
+      <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+      <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+      <style type="text/css">
+       #jj
+       {
+           margin-top: 100px;
+       }
+       #kk
+       {
+           margin-top: 100px;
+       }
+     
+      </style>
+    </h:head>
+    <h:body>
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Probleme ET Solution</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation -->
+            <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <h:link class="nav-link text-gris"  value = "Profil" outcome = "Profil" />
+                    </li>   
+                     <li class="nav-item">
+                        <h:link class="nav-link text-gris"  value = "Recherche" outcome = "Recherche" />
+                    </li>          
+                </ul>
+                 
+                         
+        
+                 <h:form method="post" action="Deconnexion" style=" margin-left: 700px;" >
+                      <h:commandButton  value="Deconnexion" action="#{login.logout}"></h:commandButton>
+                </h:form> 
+            </div>
+        </ul>
+        </div>
+    </nav>
+    <!-- Navigation -->
+  <div class="container" id="kk">
+	<div class="row">
+	    <h3>Modifier le probleme:</h3>
+		<h:form role="form" id="contact-form" class="contact-form">
+                    <div class="row">
+                		<div class="col-md-6">
+                  		<div class="form-group">
+                            <h:inputText class="form-control" id="titre" value="#{login.prob.titre}" required="true" size="20" maxlength="60" requiredMessage="Vous devez fournir un titre"></h:inputText>
+                  		    <h:message for="titre" errorClass="erreur"  />
+                  		</div>
+                  	</div>
+                  	</div>
+                  	<div class="row">
+                  		<div class="col-md-12">
+                  		<div class="form-group">
+                            <h:inputTextarea class="form-control textarea" id="texte" rows="10" cols="200" value="#{login.prob.text_prob}" required="true" size="20" maxlength="60" requiredMessage="Vous devez fournir un titre"></h:inputTextarea>
+                             <h:message for="texte" errorClass="erreur"  />
+                  		</div>
+                  	</div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                       <h:commandButton  class="btn main-btn pull-right" style="margin-left: 1100px; margin-bottom:10px;" value="Enregistrer" action="#{login.ModifierProb}"></h:commandButton>
+                       <h:messages globalOnly="true" infoClass="info" />
+                    </div>
+                    </div>
+       </h:form>
+	</div>
+</div>
+    
+
+     
+
+
+  
+
+   <!-- Footer -->
+    <footer class="footer bg-dark text-white">
+
+        <!-- Social Icons -->
+        <div class="bg-primary">
+            <div class="container">
+                <div class="row py-4">
+                    <div class="col-md-6 col-lg-7">
+                        <h4 class="mb-0 white-text">Se connecter avec nous sue les réseaux sociaux</h4>
+                    </div>
+                    <div class="col-md-6 col-lg-5 text-right">
+                        <a><i class="fa fa-facebook white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-twitter white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-google-plus white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-linkedin white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-instagram white-text mr-lg-4 fa-2x"> </i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Social Icons -->
+
+        <!-- Footer Links -->
+        <div class="container pt-5 pb-2">
+            <div class="row">
+            </div>
+        </div>
+        <!-- Footer Links-->
+
+        <hr class="bg-white mx-4 mt-2 mb-1"></hr>
+
+        <!-- Copyright-->
+        <div class="container-fluid">
+            <p class="text-center m-0 py-1">
+                © 2017 Copyright <a href="https://getbootstrap.com/" class="text-white">Problemes ET Solutions</a>
+            </p>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+    </h:body>
+</html>

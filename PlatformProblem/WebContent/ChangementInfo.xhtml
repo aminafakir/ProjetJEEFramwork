@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <meta charset="utf-8" />
+
+<title>Problem ET Solution</title>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+<style type="text/css">
+
+ body {
+    background-color: #eee;
+}
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto ;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
+#fm
+{
+   margin-top: 100px ;
+   margin-bottom: 50px ;
+}
+
+form .erreur {
+    color: #900;
+}
+
+form .succes {
+    color: #090;
+}
+
+ 
+</style>
+    </h:head>
+    <h:body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Probleme ET Solution</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation -->
+            <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <h:link class="nav-link text-gris"  value = "Profil" outcome = "Profil" />
+                    </li>   
+                     <li class="nav-item">
+                        <h:link class="nav-link text-gris"  value = "Recherche" outcome = "Recherche" />
+                    </li>          
+                </ul>
+                 
+                         
+        
+                 <h:form method="post" action="Deconnexion" style=" margin-left: 700px;" >
+                      <h:commandButton  value="Deconnexion" action="#{login.logout}"></h:commandButton>
+                </h:form> 
+            </div>
+        </ul>
+        </div>
+    </nav>
+    <!-- Navigation -->
+    <div class="container" id="fm">
+            <h:form class="form-horizontal" id="change">
+                <h2>Changer vos Informations:</h2>
+                <div class="form-group">
+                    <h:outputLabel for="Nom">Nom <span class="requis">*</span></h:outputLabel>
+                    <div class="col-sm-9">
+                    <h:inputText id="Nom" value="#{login.u.nom}" required="true" size="20" maxlength="20" requiredMessage="Veuillez saisir le nom"  />
+                    <h:message for="Nom" errorClass="erreur"  />
+                    </div>
+                </div>
+                 <div class="form-group">
+                     <h:outputLabel for="Prenom">Prenom <span class="requis">*</span></h:outputLabel>
+                    <div class="col-sm-9">
+                        <h:inputText id="Prenom" value="#{login.u.prenom}" required="true" size="20" maxlength="20" requiredMessage="Veuillez saisir le prenom"  />
+                        <h:message for="Prenom" errorClass="erreur" />
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <h:outputLabel for="email">Adresse email <span class="requis">*</span></h:outputLabel>
+                    <div class="col-sm-9">
+	                     <h:inputText id="email" value="#{login.u.mail}" required="true" size="20" maxlength="60" requiredMessage="Veuillez saisir l'adresse mail"  />
+	                     <h:message for="email" errorClass="erreur" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="Description">Description</h:outputLabel>
+                    <div class="col-sm-9">
+                        <h:inputTextarea name="Description" id="Description" rows="3" cols="46" placeholder="Description" value="#{login.u.comm}"></h:inputTextarea>
+                        <h:message for="Description" errorClass="erreur" />
+                    </div>
+                </div>
+                <div class="form-group">
+                     <h:outputLabel for="motdepasse">Mot de passe <span class="requis">*</span></h:outputLabel>
+                    <div class="col-sm-9">
+                        <h:inputSecret id="motdepasse" value="#{login.u.mot_de_passe}" required="true" size="20" maxlength="20" requiredMessage="Veuillez saisir un mot de passe"  />
+                        <h:message for="motdepasse" errorClass="erreur" />
+                    </div>
+                </div>
+                <div class="form-group">
+                   <h:outputLabel for="confirmation">Confirmation du mot de passe <span class="requis">*</span></h:outputLabel>
+                    <div class="col-sm-9">
+                        <h:inputSecret id="confirmation" value="#{login.u.confirm_mdp}" required="true" size="20" maxlength="20" requiredMessage="Veuillez saisir la confirmation du mot de passe"  />
+                        <h:message for="confirmation" errorClass="erreur" />
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <h:commandButton value="Appliquer" action="#{login.changerInfo}" styleClass="sansLabel" />
+                        <h:messages globalOnly="true" infoClass="info" />
+                    </div>
+                </div>
+            </h:form> <!-- /form -->
+        </div> <!-- ./container -->
+     <!-- Inscription form-->
+
+   <!-- Footer -->
+    <footer class="footer bg-dark text-white">
+
+        <!-- Social Icons -->
+        <div class="bg-primary">
+            <div class="container">
+                <div class="row py-4">
+                    <div class="col-md-6 col-lg-7">
+                        <h4 class="mb-0 white-text">Se connecter avec nous sue les réseaux sociaux</h4>
+                    </div>
+                    <div class="col-md-6 col-lg-5 text-right">
+                        <a><i class="fa fa-facebook white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-twitter white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-google-plus white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-linkedin white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-instagram white-text mr-lg-4 fa-2x"> </i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Social Icons -->
+
+        <!-- Footer Links -->
+        <div class="container pt-5 pb-2">
+            <div class="row">
+            </div>
+        </div>
+        <!-- Footer Links-->
+
+        <hr class="bg-white mx-4 mt-2 mb-1"></hr>
+
+        <!-- Copyright-->
+        <div class="container-fluid">
+            <p class="text-center m-0 py-1">
+                © 2017 Copyright <a href="https://getbootstrap.com/" class="text-white">Problemes ET Solutions</a>
+            </p>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+   
+    </h:body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>GERER VOS PROJETS</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+        <style type="text/css">
+            #acc
+            {
+            	margin-bottom: 1000px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+    <div style="margin-top:100px;">
+    	
+    </div>
+    
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Probleme ET Solution</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation -->
+            <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <h:link class="nav-link text-gris"  value = "Profil" outcome = "Profil" />
+                    </li>   
+                     <li class="nav-item">
+                        <h:link class="nav-link text-gris"  value = "Recherche" outcome = "Recherche" />
+                    </li>          
+                </ul>
+                 
+                         
+        
+                 <h:form method="post" action="Deconnexion" style=" margin-left: 700px;" >
+                      <h:commandButton  value="Deconnexion" action="#{login.logout}"></h:commandButton>
+                </h:form> 
+            </div>
+        </ul>
+        </div>
+    </nav>
+    <!-- Navigation -->
+    
+   <h2 class="page-header" style="margin-left:70px;">Resultats:</h2>   
+     <div class="row" >
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Probleme</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                <ui:repeat  value="#{gererproblem.pros}" var="pro">
+                  <tr>
+                    <th scope="row">#{pro.id}</th>
+                    <td>#{pro.titre}</td> 
+                    <td><h:form>
+                      <h:commandButton class="btn btn-primary" style="margin-bottom: 50px; margin-top: 10px;" value="Detail" action="#{gererproblem.detail(pro.id)}"></h:commandButton>
+                    </h:form></td>
+                    </tr>
+                  </ui:repeat>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="kkk">
+      </div>
+     
+
+   <!-- Footer -->
+    <footer class="footer bg-dark text-white">
+
+        <!-- Social Icons -->
+        <div class="bg-primary">
+            <div class="container">
+                <div class="row py-4">
+                    <div class="col-md-6 col-lg-7">
+                        <h4 class="mb-0 white-text">Se connecter avec nous sue les réseaux sociaux</h4>
+                    </div>
+                    <div class="col-md-6 col-lg-5 text-right">
+                        <a><i class="fa fa-facebook white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-twitter white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-google-plus white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-linkedin white-text mr-lg-4 fa-2x"> </i></a>
+                        <a><i class="fa fa-instagram white-text mr-lg-4 fa-2x"> </i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Social Icons -->
+
+        <!-- Footer Links -->
+        <div class="container pt-5 pb-2">
+            <div class="row">
+            </div>
+        </div>
+        <!-- Footer Links-->
+
+        <hr class="bg-white mx-4 mt-2 mb-1"></hr>
+
+        <!-- Copyright-->
+        <div class="container-fluid">
+            <p class="text-center m-0 py-1">
+                © 2017 Copyright <a href="https://getbootstrap.com/" class="text-white">Problemes ET Solutions</a>
+            </p>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+        
+    </h:body>
+    </html>
